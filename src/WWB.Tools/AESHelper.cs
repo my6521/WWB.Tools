@@ -13,8 +13,8 @@ namespace WWB.Tools
         /// 加密
         /// </summary>
         /// <param name="encryptStr">待加密字符串</param>
-        /// <param name="key">密钥，base64字符串（由16字节字符串转换的base64=字符串）</param>
-        /// <param name="iv">base64字符串（由16字节字符串转换的base64=字符串）</param>
+        /// <param name="key">密钥，base64字符串（由16字节字符串转换的base64字符串）</param>
+        /// <param name="iv">base64字符串（由16字节字符串转换的base64字符串）</param>
         /// <returns></returns>
         public static string Encrypt(string encryptStr, string key, string iv)
         {
