@@ -3,22 +3,22 @@ using Xunit;
 
 namespace WWB.Tools.Tests
 {
-    public class UnitTest1
+    public class ImageTests
     {
         [Fact]
         public void Test1()
         {
-            using (var stream = File.OpenRead("D:\\ÀÏ±Ï.jpg"))
+            using (var stream = File.OpenRead("D:\\ï¿½Ï±ï¿½.jpg"))
             {
                 var result = ImageCompressHelper.CompressImage(stream, 90, 400);
             }
 
-            using (var stream = File.OpenRead("D:\\ÀÏÍõ.jpg"))
+            using (var stream = File.OpenRead("D:\\ï¿½ï¿½ï¿½ï¿½.jpg"))
             {
                 var result = ImageCompressHelper.CompressImage(stream, 90, 500);
 
                 System.Drawing.Image ResourceImage = System.Drawing.Image.FromStream(result);
-                ResourceImage.Save("D:\\ÀÏÍõ5.jpg");
+                ResourceImage.Save("D:\\ï¿½ï¿½ï¿½ï¿½5.jpg");
             }
         }
     }
