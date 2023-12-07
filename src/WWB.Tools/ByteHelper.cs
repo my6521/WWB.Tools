@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace WWB.Tools
@@ -14,7 +12,7 @@ namespace WWB.Tools
         /// <param name="start"></param>
         /// <param name="len"></param>
         /// <returns></returns>
-        public static int ByteToInt(byte[] buff, int start, int len)//将字节数组转换成int类型
+        public static int ByteToInt(byte[] buff, ref int start, int len)//将字节数组转换成int类型
         {
             int temp = 0;
             int n = 0;
@@ -24,6 +22,9 @@ namespace WWB.Tools
                 temp = buff[start + i] & 0xff;
                 n |= temp;
             }
+
+            start += len;
+
             return n;
         }
 
