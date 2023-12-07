@@ -3,12 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
 	  <PackageId>WWB.Tools</PackageId>
-	  <Version>1.0.3</Version>
+	  <Version>1.0.4</Version>
 	  <Authors>my6521</Authors>
 	  <Description>NetCore3.1 工具类。</Description>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <RepositoryUrl>https://github.com/my6521/WWB.Tools</RepositoryUrl>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
