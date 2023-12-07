@@ -29,6 +29,27 @@ namespace WWB.Tools
         }
 
         /// <summary>
+        /// 将字节数组转换成int类型
+        /// </summary>
+        /// <param name="buff"></param>
+        /// <param name="start"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
+        public static int ByteToInt(byte[] buff, int start, int len)//将字节数组转换成int类型
+        {
+            int temp = 0;
+            int n = 0;
+            for (int i = 0; i < len; i++)
+            {
+                n <<= 8;
+                temp = buff[start + i] & 0xff;
+                n |= temp;
+            }
+
+            return n;
+        }
+
+        /// <summary>
         /// int类型转字节数组
         /// </summary>
         /// <param name="vel"></param>
