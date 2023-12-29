@@ -6,7 +6,15 @@ namespace WWB.Tools
     {
         private const double EARTH_RADIUS = 6371000;
 
-        private static double CalculateDistance(double lat1, double lng1, double lat2, double lng2)
+        /// <summary>
+        /// 计算两点距离
+        /// </summary>
+        /// <param name="lat1"></param>
+        /// <param name="lng1"></param>
+        /// <param name="lat2"></param>
+        /// <param name="lng2"></param>
+        /// <returns></returns>
+        public static double CalculateDistance(double lat1, double lng1, double lat2, double lng2)
         {
             double dLat = ToRadians(lat2 - lat1);
             double dLon = ToRadians(lng2 - lng1);
