@@ -28,12 +28,16 @@ namespace WWB.Tools
                 Key = Convert.FromBase64String(key),
                 IV = Convert.FromBase64String(iv)
             };
+            using (rm)
+            {
+                using (ICryptoTransform cTransform = rm.CreateEncryptor())
+                {
+                    byte[] toEncryptArray = Encoding.UTF8.GetBytes(encryptStr);
+                    byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
 
-            ICryptoTransform cTransform = rm.CreateEncryptor();
-            byte[] toEncryptArray = Encoding.UTF8.GetBytes(encryptStr);
-            byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
-
-            return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+                    return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+                }
+            }
         }
 
         /// <summary>
@@ -55,12 +59,16 @@ namespace WWB.Tools
                 Key = Convert.FromBase64String(key),
                 IV = Convert.FromBase64String(iv)
             };
+            using (rm)
+            {
+                using (ICryptoTransform cTransform = rm.CreateDecryptor())
+                {
+                    byte[] toDecryptArray = Convert.FromBase64String(decryptStr);
+                    byte[] resultArray = cTransform.TransformFinalBlock(toDecryptArray, 0, toDecryptArray.Length);
 
-            ICryptoTransform cTransform = rm.CreateDecryptor();
-            byte[] toDecryptArray = Convert.FromBase64String(decryptStr);
-            byte[] resultArray = cTransform.TransformFinalBlock(toDecryptArray, 0, toDecryptArray.Length);
-
-            return Encoding.UTF8.GetString(resultArray);
+                    return Encoding.UTF8.GetString(resultArray);
+                }
+            }
         }
     }
 }
