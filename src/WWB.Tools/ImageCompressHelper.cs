@@ -48,27 +48,26 @@ namespace WWB.Tools
             }
 
             Bitmap ob = new Bitmap(dWidth, dHeight);
-            Graphics g = Graphics.FromImage(ob);
-
-            g.Clear(Color.WhiteSmoke);
-            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-
-            g.DrawImage(iSource, new Rectangle((dWidth - sW) / 2, (dHeight - sH) / 2, sW, sH), 0, 0, iSource.Width,
-                iSource.Height, GraphicsUnit.Pixel);
-
-            g.Dispose();
-
-            //以下代码为保存图片时，设置压缩质量
-            EncoderParameters ep = new EncoderParameters();
-            long[] qy = new long[1];
-            qy[0] = flag; //设置压缩的比例1-100
-            EncoderParameter eParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, qy);
-            ep.Param[0] = eParam;
-
             try
             {
+                using (Graphics g = Graphics.FromImage(ob))
+                {
+                    g.Clear(Color.WhiteSmoke);
+                    g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
+                    g.DrawImage(iSource, new Rectangle((dWidth - sW) / 2, (dHeight - sH) / 2, sW, sH), 0, 0, iSource.Width,
+                        iSource.Height, GraphicsUnit.Pixel);
+                }
+
+                //以下代码为保存图片时，设置压缩质量
+                EncoderParameters ep = new EncoderParameters();
+                long[] qy = new long[1];
+                qy[0] = flag; //设置压缩的比例1-100
+                EncoderParameter eParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, qy);
+                ep.Param[0] = eParam;
+
                 ImageCodecInfo[] arrayICI = ImageCodecInfo.GetImageEncoders();
                 ImageCodecInfo jpegICIinfo = null;
                 for (int x = 0; x < arrayICI.Length; x++)
